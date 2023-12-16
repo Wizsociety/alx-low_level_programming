@@ -1,35 +1,19 @@
-#include<stdlib.h>
-#include<string.h>
-#include<stdio.h>
 #include "lists.h"
 /**
- * list_t *add_node is a function
- * return new
+ * list_len - returns then number of elements in a list.
+ * @h: singly linked list.
+ * Return: number of elements in the list.
  */
-list_t *add_node(list_t **head, const char *str)
+
+size_t list_len(const list_t *h)
 {
-	char *dup;
-	int len;
-	list_t *new;
+	size_t number_of_nodes;
 
-	new = malloc(sizeof(list_t));
-	if (new == NULL)
-		return (NULL);
-	dup = strdup(str);
-	if (dup == NULL)
+	number_of_nodes = 0;
+	while (h != NULL)
 	{
-		free(new);
-		return (NULL);
+		h = h->next;
+		number_of_nodes++;
 	}
-
-	for (len = 0; str[len];)
-		len++;
-
-	new - > str = dup;
-	new - > len = len;
-	new - > next = *head;
-
-	*head = new;
-
-	return (new);
+	return (number_of_nodes);
 }
